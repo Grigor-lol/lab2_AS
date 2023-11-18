@@ -31,6 +31,9 @@
     <string name="item_price_req">Item Price*</string>
     <string name="no">No</string>
     <string name="price">Price</string>
+    <string name="provider">Provider</string>
+    <string name="provider_email">Email</string>
+    <string name="provider_number">Number</string>
     <string name="quantity_in_stock">Quantity in stock</string>
     <string name="in_stock">%d in stock</string>
     <string name="prov_email">Provider email: %s</string>

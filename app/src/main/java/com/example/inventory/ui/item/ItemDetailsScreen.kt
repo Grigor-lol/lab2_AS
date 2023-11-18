@@ -209,8 +209,8 @@ fun ItemDetails(
                 )
             )
             ItemDetailsRow(
-                labelResID = R.string.price,
-                itemDetail = item.formatedPrice(),
+                labelResID = R.string.provider,
+                itemDetail = item.provider,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
                         id = R.dimen
@@ -219,8 +219,8 @@ fun ItemDetails(
                 )
             )
             ItemDetailsRow(
-                labelResID = R.string.price,
-                itemDetail = item.formatedPrice(),
+                labelResID = R.string.provider_email,
+                itemDetail = item.email,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
                         id = R.dimen
@@ -229,8 +229,8 @@ fun ItemDetails(
                 )
             )
             ItemDetailsRow(
-                labelResID = R.string.price,
-                itemDetail = item.formatedPrice(),
+                labelResID = R.string.provider_number,
+                itemDetail = item.number,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
                         id = R.dimen
