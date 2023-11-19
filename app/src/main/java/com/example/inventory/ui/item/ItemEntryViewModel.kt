@@ -83,15 +83,23 @@ data class ItemDetails(
  * not a valid [Double], then the price will be set to 0.0. Similarly if the value of
  * [ItemUiState] is not a valid [Int], then the quantity will be set to 0
  */
-fun ItemDetails.toItem(): Item = Item(
-    id = id,
-    name = name,
-    price = price.toDoubleOrNull() ?: 0.0,
-    quantity = quantity.toIntOrNull() ?: 0,
-    email = email,
-    number = number,
-    provider = provider
-)
+fun ItemDetails.toItem(): Item {
+    val validEmailRegex = Regex("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+    val validNumberRegex = Regex("^8\\d{10}$")
+
+    val validEmail = if (validEmailRegex.matches(email)) email else ""
+    val validNumber = if (validNumberRegex.matches(number)) number else ""
+
+    return Item(
+        id = id,
+        name = name,
+        price = price.toDoubleOrNull() ?: 0.0,
+        quantity = quantity.toIntOrNull() ?: 0,
+        email = validEmail,
+        number = validNumber,
+        provider = provider
+    )
+}
 
 fun Item.formatedPrice(): String {
     return NumberFormat.getCurrencyInstance().format(price)
