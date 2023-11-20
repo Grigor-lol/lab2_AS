@@ -16,9 +16,11 @@
 
 package com.example.inventory.ui.item
 
+import android.content.Intent
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.inventory.MAIN
 import com.example.inventory.data.ItemsRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -69,6 +71,27 @@ class ItemDetailsViewModel(
      */
     suspend fun deleteItem() {
         itemsRepository.deleteItem(uiState.value.itemDetails.toItem())
+    }
+
+    fun share() {
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.type = "text/plain"
+
+        val sharingText = """
+            Item Details:
+            Name: ${uiState.value.itemDetails.name}
+            Price: ${uiState.value.itemDetails.price} $
+            Quatity: ${uiState.value.itemDetails.quantity}
+            
+            Supplier Info:
+            Name: ${uiState.value.itemDetails.provider}
+            Phone Number: ${uiState.value.itemDetails.number}
+            Email: ${uiState.value.itemDetails.email}
+        """.trimIndent()
+
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, sharingText)
+
+        MAIN.startActivity(Intent.createChooser(sharingIntent, null))
     }
 
     companion object {

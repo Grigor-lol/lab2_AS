@@ -80,6 +80,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation ("androidx.appcompat:appcompat:1.4.1")
+    implementation ("androidx.sharetarget:sharetarget:1.2.0-rc01")
 
     //Room
     implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
